@@ -170,9 +170,10 @@ cdvPluginPostBuildExtras.add({
         def variantName = variant.name.capitalize()
         def mergeTask = tasks["merge${variantName}Assets"]
         def processTask = tasks["process${variantName}Resources"]
-        def outFile = new File (mergeTask.outputDir, "xwalk-command-line")
-        def newTask = project.task("createXwalkCommandLineFile${variantName}") << {
-            mergeTask.outputDir.mkdirs()
+        def outDir = mergeTask.getOutputDir()
+        def outFile = new File(outDir.getAsFile().get(), "xwalk-command-line")
+        def newTask = project.task("createXwalkCommandLineFile${variantName}") doLast {
+            file(outDir.getAsFile().get()).mkdirs()
             outFile.write("xwalk ${xwalkCommandLine}\n")
         }
         newTask.dependsOn(mergeTask)

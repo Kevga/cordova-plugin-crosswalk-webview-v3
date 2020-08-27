@@ -57,6 +57,9 @@ Check this gist to build all of them in one bash script: (<https://gist.github.c
 
 ### Release Notes
 
+#### 3.0.4 (August 27, 2020)
+* Fixed issues with newer gradle versions for cordova-android 9 compatibility
+
 #### 3.0.2 (November 10, 2019)
 * Added compatibility with cordova 9
 * Fixed version code calculation for 64bit builds (aligned them with 32bit build codes)
